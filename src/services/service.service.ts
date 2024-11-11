@@ -28,10 +28,21 @@ export class ServiceService {
     const limit = getRequest.limit!;
     const offset = (page - 1) * limit;
 
-    const totalServices = await prismaClient.service.count();
+    const totalServices = await prismaClient.service.count({
+      where: {
+        capacity: {
+          gt: 0 // Memastikan kapasitas lebih besar dari 0
+        }
+      }
+    });
     const services = await prismaClient.service.findMany({
       skip: offset,
-      take: limit
+      take: limit,
+      where: {
+        capacity: {
+          gt: 0 // Memastikan kapasitas lebih besar dari 0
+        }
+      }
     });
 
     const serviceResponses: ServiceResponse[] = services.map(toServiceResponse);

@@ -11,13 +11,14 @@ export type ReservationResponse = {
 }
 
 export type CreateReservationRequest = {
+  userId: string;
   serviceId: string;
-  reservationDate: Date;
+  reservationDate: string;
   reservationTime: string;
   numberOfPeople: number;
 }
 
-export function toReservationResponse(reservation: Reservation & { user: User; service: Service }): ReservationResponse {
+export function toReservationResponse(reservation: Reservation): ReservationResponse {
   // Format tanggal dan waktu yang diinginkan
   const reservationDate = reservation.reservationDate.toISOString().split('T')[0]; // Format 'YYYY-MM-DD'
   const reservationTime = reservation.reservationTime.toISOString().split('T')[1].slice(0, 5); // Format 'HH:mm'
