@@ -13,4 +13,11 @@ export class ServiceValidation {
     page: z.number().positive().optional(),
     limit: z.number().positive().optional()
   });
+
+  static readonly UPDATE: ZodType = z.object({
+    name: z.string().min(1).max(100).optional(),
+    description: z.string().min(1).max(100).optional(),
+    price: z.number().positive().optional(),
+    capacity: z.number().positive().optional()
+  });
 }

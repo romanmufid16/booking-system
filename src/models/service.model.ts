@@ -20,6 +20,14 @@ export type GetServiceRequest = {
   limit?: number;
 }
 
+export type UpdateServiceRequest = {
+  id: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  capacity?: number;
+}
+
 export type ListResponse = {
   services: ServiceResponse[];
   total: number;
