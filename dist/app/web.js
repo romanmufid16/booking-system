@@ -13,7 +13,7 @@ const api_1 = require("../routes/api");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const error_middleware_1 = require("../middlewares/error.middleware");
 exports.web = (0, express_1.default)();
-// const csrfProtection = csrf({ cookie: true });
+exports.web.set('trust proxy', true);
 const limiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000,
     max: 100,

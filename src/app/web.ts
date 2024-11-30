@@ -8,7 +8,7 @@ import  rateLimit from "express-rate-limit";
 import { errorMiddleware } from "../middlewares/error.middleware";
 
 export const web = express();
-// const csrfProtection = csrf({ cookie: true });
+web.set('trust proxy', true);
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
