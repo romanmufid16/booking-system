@@ -22,9 +22,13 @@ web.use(express.json());
 web.use(limiter);
 // web.use(csrfProtection)
 
+web.use('/', (req: Request, res: Response) => {
+  res.send('Hello, world!');
+});
+
 web.use('/api/v1', publicRouter);
 web.use('/api/v1', authMiddleware, apiRoutes);
 
 web.get('/protected', authMiddleware, (req: Request, res: Response) => {
   res.send({message: 'This is protected'});
-})
+});
