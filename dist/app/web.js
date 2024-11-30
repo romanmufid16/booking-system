@@ -11,6 +11,7 @@ const publicRoutes_1 = require("../routes/publicRoutes");
 const auth_middleware_1 = require("../middlewares/auth.middleware");
 const api_1 = require("../routes/api");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const error_middleware_1 = require("../middlewares/error.middleware");
 exports.web = (0, express_1.default)();
 // const csrfProtection = csrf({ cookie: true });
 const limiter = (0, express_rate_limit_1.default)({
@@ -23,11 +24,12 @@ exports.web.use((0, cors_1.default)());
 exports.web.use(express_1.default.json());
 exports.web.use(limiter);
 // web.use(csrfProtection)
+exports.web.use('/api/v1', publicRoutes_1.publicRouter);
+exports.web.use('/api/v1', auth_middleware_1.authMiddleware, api_1.apiRoutes);
 exports.web.use('/', (req, res) => {
     res.send('Hello, world!');
 });
-exports.web.use('/api/v1', publicRoutes_1.publicRouter);
-exports.web.use('/api/v1', auth_middleware_1.authMiddleware, api_1.apiRoutes);
 exports.web.get('/protected', auth_middleware_1.authMiddleware, (req, res) => {
     res.send({ message: 'This is protected' });
 });
+exports.web.use(error_middleware_1.errorMiddleware);
