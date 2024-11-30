@@ -14,10 +14,5 @@
   ],
   "env": {
     "DATABASE_URL": "postgresql://default:NysVE73lpikv@ep-blue-cloud-a1vao7r2.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
-  },
-  "build": {
-    "commands": [
-      "prisma generate"
-    ]
   }
 }
