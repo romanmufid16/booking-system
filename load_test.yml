@@ -2,7 +2,7 @@ config:
   target: 'http://localhost:3000'  # URL Express.js Anda
   phases:
     - duration: 60  # Durasi tes dalam detik
-      arrivalRate: 5  # Menambahkan 5 request per detik
+      arrivalRate: 10  # Menambahkan 5 request per detik
 scenarios:
   - flow:
       - get:
