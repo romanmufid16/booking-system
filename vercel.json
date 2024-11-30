@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/main.js",
+      "src": "package.json",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/main.js"
+      "dest": "/dist/main.js"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://default:NysVE73lpikv@ep-blue-cloud-a1vao7r2.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
+  },
+  "build": {
+    "commands": [
+      "prisma generate"
+    ]
+  }
 }
