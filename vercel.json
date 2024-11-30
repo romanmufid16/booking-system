@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "/dist/main.js",
+      "src": "package.json",
       "use": "@vercel/node"
     }
   ],
@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://default:NysVE73lpikv@ep-blue-cloud-a1vao7r2.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
+  }
 }
