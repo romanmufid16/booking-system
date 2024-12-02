@@ -23,7 +23,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  reservations Reservation[] // Relasi ke tabel Reservation
+  reservations Reservation[] 
 }
 
 enum Role {
