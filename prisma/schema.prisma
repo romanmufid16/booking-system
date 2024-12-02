@@ -9,20 +9,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("DATABASE_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("DATABASE_PRISMA_URL") // uses connection pooling
   directUrl = env("DATABASE_URL_NON_POOLING") // uses a direct connection
 }
 
 model User {
   id        String   @id @default(uuid())
-  username  String   
+  username  String
   email     String   @unique
   password  String
+  role      Role     @default(user)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   reservations Reservation[] // Relasi ke tabel Reservation
+}
+
+enum Role {
+  admin
+  user
 }
 
 model Service {

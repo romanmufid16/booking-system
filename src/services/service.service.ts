@@ -67,7 +67,7 @@ export class ServiceService {
       services: serviceResponses,
       total: totalServices,
       page,
-      showing: limit
+      showing: (serviceResponses.length > 0 ? serviceResponses.length : 0)
     };
   }
 

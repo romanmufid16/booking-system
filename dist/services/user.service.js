@@ -56,7 +56,7 @@ class UserService {
             if (!isValid) {
                 throw new error_response_1.ResponseError(401, 'Invalid credentials');
             }
-            const token = jsonwebtoken_1.default.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
+            const token = jsonwebtoken_1.default.sign({ id: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET, {
                 expiresIn: '1h'
             });
             return {

@@ -11,4 +11,3 @@ exports.publicRouter = express_1.default.Router();
 exports.publicRouter.post('/users/register', user_controller_1.UserController.register);
 exports.publicRouter.post('/users/auth', user_controller_1.UserController.login);
 exports.publicRouter.get('/services', service_controller_1.ServiceController.list);
-exports.publicRouter.post('/services/create', service_controller_1.ServiceController.create);
